@@ -36,6 +36,9 @@ screen.tracer(0)
 #creamos objeto de la clase score en my_score.py
 score=Score()
 
+#escribimos el puntaje actual de numero de estados
+score.number_of_states()
+
 #TODO: establecer el mapa de usa como fondo de nuestro screen
 screen.bgpic("blank_states_img.gif")
 
