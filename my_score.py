@@ -12,7 +12,7 @@ class Score(Turtle):
         
         self.write_score_message()
     
-    
+        
         
     def go_to_position(self):
         self.goto(150, 210)    
@@ -20,6 +20,8 @@ class Score(Turtle):
     def write_score_message(self):
         self.write('SCORE', align='center', font=('Arial', 10, 'bold'))    
     
-    def number_of_states(self):
+    def number_of_states(self, get_score):
+        
         self.goto(150, 175)   
-        self.write('0/50', align='center', font=('Courier', 22, 'bold'))   
+        self.clear()
+        self.write(f'{get_score}/50', align='center', font=('Courier', 22, 'bold'))   
