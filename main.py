@@ -1,4 +1,3 @@
-import time
 from turtle import Screen
 from my_score import Score
 
@@ -45,21 +44,24 @@ score.number_of_states(get_score=len(guessed_states))
 screen.bgpic("blank_states_img.gif")
 
 #dimenciones de nuestro screen
-screen.setup(width=725, height=491)
+screen.setup(width=725, height=591)
 
 #titulo de nuestra screen
 screen.title("U.S. States Game")
 
+#instrucciones del juego
+score.instructions()
+
 #ventana emergente para que el usuraio ingresae la respuesta del estado y la guardamos en una variable
-user_answer=(screen.textinput("Name the US states","Enter state:")).capitalize()
-#usando capitalize() nos aseguramos que la primera letra este en mayuscula
+user_answer=(screen.textinput("Name the US states","Enter state:")).title()
+#usando title() nos aseguramos que la primeras letras este en mayuscula
 
-
-#condicional de nuestro bucle while
-game_is_on=True
 
 #activamos de nuevo la animacion ya una vez todo lo del juego esta cargado
+
 screen.tracer(1)
+
+
 
 #bucle while para asegurarnos que el juego siga corriendo
 #verificamos si la respuesta ingresada por el usuario es correcta
@@ -102,11 +104,9 @@ while len(guessed_states)<50:
         break
 
     #volvemos a preguntar al usario por el nombre de un estado
-    user_answer=(screen.textinput("Can you name the US states?","Enter state:"))
+    user_answer=(screen.textinput("Can you name the US states?","Enter state:")).title()
 
-    #usando capitalize() nos aseguramos que la primera letra este en mayuscula
-    user_answer=user_answer.capitalize()
-
+    
 
 #TODO:creamos un archivo CSV que contiene los estados que no fueron adivinados por el usuario
 
@@ -125,7 +125,7 @@ for state in states_list:
 unguess_dataframe=pandas.DataFrame(unguess_states)
 
 #los states que el usuario no se sabe se exportan en un nuevo archivo, para que pueda estuidiarlos
-unguess_dataframe.to_csv('lear.cvs')
+unguess_dataframe.to_csv('learn.cvs')
 
 
 #cerrar cuando se hace click

@@ -25,3 +25,8 @@ class Score(Turtle):
         self.goto(150, 175)   
         self.clear()
         self.write(f'{get_score}/50', align='center', font=('Courier', 22, 'bold'))   
+        
+    def instructions(self):
+        self.goto(-100, 250)   
+        
+        self.write("Input 'exit' to finish the game \nautomatically, a file will be generated with the unguessed USA states.", align='center', font=('Arial', 10, 'bold'))  
