@@ -3,6 +3,7 @@ from my_score import Score
 
 from writing_states import My_turtle
 
+from instructions import Instructions
 import pandas
 
 #del archivo 50_states.csv  importamos los datos usando la libreria panda
@@ -17,11 +18,6 @@ states_list=states_column.to_list()
 #convierto el dataframe en un diccionario para poder accerder a las cordenadas del estado
 states_dic=usa_states.to_dict("records")
 
-#NOTE: borrar los sgts comentarios
-print(states_dic)
-print(states_list)
-print(states_list.index("Alaska"))
-# print(states_list[1]["x"])
 
 print(states_dic[1]['x'])
 
@@ -49,8 +45,11 @@ screen.setup(width=725, height=591)
 #titulo de nuestra screen
 screen.title("U.S. States Game")
 
-#instrucciones del juego
-score.instructions()
+#instrucciones del juego    
+Instructions()
+
+# Actualiza la pantalla para mostrar las instrucciones sin parpadear
+screen.update()
 
 #ventana emergente para que el usuraio ingresae la respuesta del estado y la guardamos en una variable
 user_answer=(screen.textinput("Name the US states","Enter state:")).title()
@@ -66,7 +65,7 @@ screen.tracer(1)
 #bucle while para asegurarnos que el juego siga corriendo
 #verificamos si la respuesta ingresada por el usuario es correcta
 while len(guessed_states)<50:
-   
+    
     
     if user_answer in states_list:
         #si la respuesta del usuario es correcta agregamos la respuesta a la lista
@@ -97,17 +96,16 @@ while len(guessed_states)<50:
         #actualizamos el puntaje del user, chequiando la longitud de la lista guessed_states
         get_score=len(guessed_states)
         score.number_of_states(get_score)
-        
             
     #si el usuario ingresa exit, se corta el ciclo while y termina el game    
     if user_answer == 'Exit':
         break
-
+    
+   
     #volvemos a preguntar al usario por el nombre de un estado
     user_answer=(screen.textinput("Can you name the US states?","Enter state:")).title()
-
-    
-
+        
+   
 #TODO:creamos un archivo CSV que contiene los estados que no fueron adivinados por el usuario
 
 #lista de estados que no fueron adivinados por el usuario
@@ -127,6 +125,10 @@ unguess_dataframe=pandas.DataFrame(unguess_states)
 #los states que el usuario no se sabe se exportan en un nuevo archivo, para que pueda estuidiarlos
 unguess_dataframe.to_csv('learn.cvs')
 
-
 #cerrar cuando se hace click
 screen.exitonclick()
+        
+
+    
+
+

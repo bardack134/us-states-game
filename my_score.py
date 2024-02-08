@@ -30,3 +30,5 @@ class Score(Turtle):
         self.goto(-100, 250)   
         
         self.write("Input 'exit' to finish the game \nautomatically, a file will be generated with the unguessed USA states.", align='center', font=('Arial', 10, 'bold'))  
+        
+
